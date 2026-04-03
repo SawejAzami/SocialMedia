@@ -9,7 +9,7 @@ const create=async(req,res)=>{
         const {message,userId,username}=req.body;
         // console.log(message)
        const localPath = req.file ? req.file.path : null;
-      //  console.log(localPath)
+       console.log(localPath)
        let imageUrl = "";
         if (localPath) {
            const cloudImage = await uploadOnCloudinary(localPath);

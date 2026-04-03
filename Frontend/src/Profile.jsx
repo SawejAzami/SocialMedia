@@ -41,7 +41,7 @@ export default function Profile({token,url}) {
       formData.append("image", image); 
       formData.append("username", user.username); 
 // console.log(text)
- console.log(image);
+//  console.log(image);
       const response = await axios.post(
         `${url}/api/post/create`,
         formData,
