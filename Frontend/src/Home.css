@@ -1,0 +1,103 @@
+Full page
+.container {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 15px 30px;
+}
+
+/* Logo */
+.logo {
+  color: white;
+  margin: 0;
+}
+
+/* Links container */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  color: #00bcd4;
+}
+
+/* Content */
+.content {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.content h2 {
+  font-size: 28px;
+}
+
+.content p {
+  font-size: 18px;
+  color: gray;
+}
+
+.home-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+}
+
+.home-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Post card */
+.post-card {
+  background: white;
+
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Username */
+.post-card h4 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Text */
+.post-card p {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+/* Image */
+.post-card img {
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.likeAndComments{
+    padding: 5px  30px;
+    display: flex;
+    justify-content: space-between;
+}
+.likeColor{
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 10px;
+}
