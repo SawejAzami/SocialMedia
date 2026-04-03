@@ -16,6 +16,10 @@ app.use(cookieParser());
 app.use("/api/user",userRouter);
 app.use("/api/post", postRouter);
 
+app.get("/", (req, res) => {
+  res.send("its runnig well");
+});
+
 const port=process.env.PORT || 4000
 
 connectDB().then(() => {
