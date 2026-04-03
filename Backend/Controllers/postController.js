@@ -4,44 +4,81 @@ import { Post } from "../Models/postModel.js";
 import { User } from "../Models/userModel.js";
 
 
-const create=async(req,res)=>{
-    try {
-        const {message,userId,username}=req.body;
-        // console.log(message)
-       const localPath = req.file ? req.file.path : null;
-       console.log(localPath)
-       let imageUrl = "";
-        if (localPath) {
-           const cloudImage = await uploadOnCloudinary(localPath);
-          // cloudImage = await cloudinary.uploader.upload(req.file.path);
-           if (cloudImage && cloudImage.url) {
-             imageUrl = cloudImage.url;
-           }
-        }
+// const create=async(req,res)=>{
+//     try {
+//         const {message,userId,username}=req.body;
+//         // console.log(message)
+//        const localPath = req.file ? req.file.path : null;
+//        console.log(localPath)
+//        let imageUrl = "";
+//         if (localPath) {
+//            const cloudImage = await uploadOnCloudinary(localPath);
+//           // cloudImage = await cloudinary.uploader.upload(req.file.path);
+//            if (cloudImage && cloudImage.url) {
+//              imageUrl = cloudImage.url;
+//            }
+//         }
 
-        const post = new Post({
-          image: imageUrl,
-          message: message || "",
-          userId: userId,
-          username: username,
-        });
+//         const post = new Post({
+//           image: imageUrl,
+//           message: message || "",
+//           userId: userId,
+//           username: username,
+//         });
 
-        await post.save()
-        return res.json({
-          success: true,
-          message: "Post created...",
+//         await post.save()
+//         return res.json({
+//           success: true,
+//           message: "Post created...",
           
-        });
+//         });
 
-    } catch (error) {
-        console.log(error);
+//     } catch (error) {
+//         console.log(error);
         
-        return res.json({
-            success:false,
-            message:"something went wrong"
-        })
+//         return res.json({
+//             success:false,
+//             message:"something went wrong"
+//         })
+//     }
+// }
+
+const create = async (req, res) => {
+  try {
+    const { message, userId, username } = req.body;
+
+    let imageUrl = "";
+
+    if (req.file) {
+      const cloudImage = await uploadOnCloudinary(req.file.buffer);
+
+      if (cloudImage && cloudImage.url) {
+        imageUrl = cloudImage.url;
+      }
     }
-}
+
+    const post = new Post({
+      image: imageUrl,
+      message: message || "",
+      userId,
+      username,
+    });
+
+    await post.save();
+
+    return res.json({
+      success: true,
+      message: "Post created...",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const getPost=async(req,res)=>{
     try {
         const post=await Post.find()
