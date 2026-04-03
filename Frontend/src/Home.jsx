@@ -13,7 +13,7 @@ export default function Home({url}) {
       try {
         const res = await axios.get(url + "/api/post/get");
         setPosts(res.data.post);
-        // console.log(res);
+        console.log(res);
       } catch (error) {
         console.log(error);
       }

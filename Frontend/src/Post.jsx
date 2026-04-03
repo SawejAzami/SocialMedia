@@ -79,7 +79,8 @@ function Post({ post, setPosts,url }) {
             <span>{post.likes.length}</span>
           </div>
           <div style={{ cursor: "pointer" }} onClick={openComments}>
-            comments
+            <span>comments</span>
+            <span style={{ marginLeft: "10px" }}>{post.comments.length}</span>
           </div>
         </div>
         {open && (
