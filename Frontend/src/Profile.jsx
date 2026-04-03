@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile({token,url}) {
+  const navigate=useNavigate()
     const [user,setUser]=useState({})
     // const url="http://localhost:5000"
     useEffect(() => {
@@ -53,10 +55,12 @@ export default function Profile({token,url}) {
         },
       );
      
-      console.log(response);
+      // console.log(response);
 
       setText("");
       setImage(null);
+      navigate("/");
+      
     } catch (error) {
       console.log(error);
     }
