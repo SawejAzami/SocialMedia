@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import axios from "axios"
 
-export default function Signup() {
+export default function Signup({url}) {
     const navigate=useNavigate()
         const [data,setData]=useState({
             username:"",
@@ -17,7 +17,7 @@ export default function Signup() {
           };
            const signup = async (e) => {
                 e.preventDefault();
-                const url="http://localhost:5000"
+                // const url="http://localhost:5000"
                 const response = await axios.post(
                   `${url}/api/user/register`,
                   data

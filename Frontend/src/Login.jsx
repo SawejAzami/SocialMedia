@@ -4,9 +4,8 @@ import { useState } from "react";
 import axios from "axios"
 
 
-export default function Login({setToken}) {
+export default function Login({setToken,url}) {
     const navigate=useNavigate()
-    // const [token,setToken]=useState(null)
     const [data,setData]=useState({
         email:"",
         password:""
@@ -20,7 +19,7 @@ export default function Login({setToken}) {
          e.preventDefault();
 
          try {
-           const url = "http://localhost:5000";
+          //  const url = "http://localhost:5000";
            const response = await axios.post(`${url}/api/user/login`, data);
 
            if (!response.data.success) {

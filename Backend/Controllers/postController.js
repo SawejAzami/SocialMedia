@@ -3,18 +3,24 @@ import { uploadOnCloudinary } from "../cloudinary/cloudinary.js";
 import { Post } from "../Models/postModel.js";
 import { User } from "../Models/userModel.js";
 
+
 const create=async(req,res)=>{
     try {
         const {message,userId,username}=req.body;
         // console.log(message)
        const localPath = req.file ? req.file.path : null;
-       let cloudImage = "";
+      //  console.log(localPath)
+       let imageUrl = "";
         if (localPath) {
-           cloudImage = await uploadOnCloudinary(localPath);
+           const cloudImage = await uploadOnCloudinary(localPath);
+          // cloudImage = await cloudinary.uploader.upload(req.file.path);
+           if (cloudImage && cloudImage.url) {
+             imageUrl = cloudImage.url;
+           }
         }
 
         const post = new Post({
-          image: cloudImage.url || "",
+          image: imageUrl,
           message: message || "",
           userId: userId,
           username: username,

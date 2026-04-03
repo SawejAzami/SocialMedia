@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios"
-function Post({ post, setPosts }) {
+function Post({ post, setPosts,url }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
-  const url = "http://localhost:5000";
+  // const url = "http://localhost:5000";
   let fetchPosts = async () => {
     try {
       const res = await axios.get(url + "/api/post/get");

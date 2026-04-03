@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
-export default function Profile({token}) {
+export default function Profile({token,url}) {
     const [user,setUser]=useState({})
-    const url="http://localhost:5000"
+    // const url="http://localhost:5000"
     useEffect(() => {
       const fetchProfile = async () => {
         try {
@@ -40,9 +40,10 @@ export default function Profile({token}) {
       formData.append("userId", user._id); 
       formData.append("image", image); 
       formData.append("username", user.username); 
-console.log(text)
+// console.log(text)
+ console.log(image);
       const response = await axios.post(
-        "http://localhost:5000/api/post/create",
+        `${url}/api/post/create`,
         formData,
         {
           headers: {
@@ -51,7 +52,8 @@ console.log(text)
           },
         },
       );
-    //   console.log(response);
+     
+      console.log(response);
 
       setText("");
       setImage(null);

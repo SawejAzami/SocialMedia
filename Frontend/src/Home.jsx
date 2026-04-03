@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import axios from "axios"
 import Post from "./Post";
 
-export default function Home() {
+export default function Home({url}) {
   const [posts, setPosts] = useState([]);
 
-  const url = "http://localhost:5000"; 
+  // const url = "http://localhost:5000"; 
     let fetchPosts = async () => {
       try {
         const res = await axios.get(url + "/api/post/get");
@@ -35,7 +35,7 @@ export default function Home() {
         <p>No posts available</p>
       ) : (
         posts.map((post, index) => (
-          <Post post={post} key={index} setPosts={setPosts} />
+          <Post url={url} post={post} key={index} setPosts={setPosts} />
         ))
       )}
     </div>

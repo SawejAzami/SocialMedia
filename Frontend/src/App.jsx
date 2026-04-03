@@ -8,15 +8,22 @@ import { useState } from "react";
 import Profile from "./Profile";
 
 function App() {
+      const url = "https://socialmedia-backend-l2hq.onrender.com";
       const [token,setToken]=useState(null)
   return (
     <>
-      <Navbar token={token} setToken={setToken} />
+      <Navbar  token={token} setToken={setToken} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile setToken={setToken} />} />
+        <Route path="/" element={<Home url={url} />} />
+        <Route
+          path="/login"
+          element={<Login url={url} setToken={setToken} />}
+        />
+        <Route path="/signup" element={<Signup url={url} />} />
+        <Route
+          path="/profile"
+          element={<Profile url={url} setToken={setToken} />}
+        />
       </Routes>
     </>
   );

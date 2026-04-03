@@ -5,8 +5,6 @@ import { useEffect } from "react";
 
 export default function Navbar({token,setToken}) {
     const navigate=useNavigate()
-    // const [token,setToken]=useState(null)
-    // console.log(localStorage.getItem("token"));
 
     useEffect(()=>{
         setToken(localStorage.getItem("token"))
@@ -22,7 +20,6 @@ export default function Navbar({token,setToken}) {
     }
   return (
     <div className="container">
-      {/* Navbar */}
       <nav className="navbar">
         <h1 className="logo">SocialMedia</h1>
 
